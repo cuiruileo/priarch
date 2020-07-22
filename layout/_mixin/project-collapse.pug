@@ -1,0 +1,12 @@
+mixin project_collapse(posts)
+  ul.project-items
+    for post in posts.data
+      li.project-item
+        a.project-thumbnail(href=url_for(post.path))
+          img(loading='lazy', src=post.thumbnail, style='max-width:300px;', onerror='this.src=CONFIG.anonymous_image')
+        <br>
+        a.project-title(href=url_for(post.path))
+          !=post.title
+        .project-desc!=post.desc
+        <br>
+    include ../_partial/pagination.pug

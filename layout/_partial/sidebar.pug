@@ -1,0 +1,16 @@
+a.sidebar-toggle.sidebar-toggle-fixed.hty-icon-button
+  .hamburger(class='hamburger--spin' type='button')
+    span.hamburger-box
+      span.hamburger-inner
+
+aside.sidebar
+  script(defer, src=url_for(theme.cdn.pre + theme.sidebar.src))
+
+  .site-logo
+    a(href=url_for(config.root), title=config.title)
+      img(loading='lazy', src=url_for(theme.logo), class='img')
+
+  .site-menu
+    for nav in theme.nav
+      a(href=url_for(nav.path), title=nav.name)= nav.name.toUpperCase()
+      <br>

@@ -1,0 +1,31 @@
+extends _partial/layout.pug
+
+block content
+  #page
+    header.post-header
+      h1.post-title!= page.title
+    article#page
+
+    if page.type === 'projects'
+      include _mixin/project-collapse.pug
+      .post-collapse
+        for project in site.categories.data
+          if project.name === 'project'
+            +project_collapse(project.posts)
+
+      //- include _partial/pagination.pug
+      
+
+    else if page.type === 'news'
+      include _mixin/news-collapse.pug
+      .post-collapse
+        for news in site.categories.data
+          if news.name === 'news'
+            +news_collapse(news.posts)
+            <br><br><br><br><br>
+
+      //- include _partial/pagination.pug
+
+    else
+      section.post-body(itemprop='articleBody')
+        .post-content(class='post-markdown')!= page.content

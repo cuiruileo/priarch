@@ -1,0 +1,145 @@
+.sidebar {
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  bottom: 0;
+  left: - $sidebar-width;
+  width: $sidebar-width;
+  background: white;
+  // background-image: url($sidebar-bg-image);
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-position: convert($sidebar-bg-position);
+  // text-align: center;
+  text-align: center;
+  z-index: $sidebar-z-index;
+  transform: translateX(0);
+  visibility: hidden;
+  the-transition();
+  the-box-shadow();
+
+  +mobile() {
+    left: - $sidebar-width;
+    transform: translateX(0);
+  }
+
+  &-translate {
+    the-transition();
+    padding-left: 0;
+
+    +mobile() {
+      padding-left: 0;
+    }
+  }
+
+  &-toggle {
+    display: flex;
+    
+    +mobile() {
+      display: flex;
+    }
+
+    &-fixed {
+      position: fixed;
+      // left: 0.8rem;
+      // top: 0.6rem;
+      left: 0.9rem;
+      bottom: 1.1rem;
+      line-height: 1;
+      z-index: $menu-btn-z-index;
+      cursor: pointer;
+    }
+  }
+
+  .sidebar-panel {
+    padding: 0.5rem;
+    display: none;
+  }
+
+  .sidebar-panel-active {
+    display: block;
+  }
+
+  .links {
+    display: block;
+
+    &-item {
+      display: inline-flex;
+
+      .icon {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+
+  .links-of-author {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    &-item {
+      line-height: 1;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.sidebar-open {
+  .sidebar {
+    transform: translateX($sidebar-width);
+    visibility: visible;
+  }
+
+  .sidebar-translate {
+    padding-left: $sidebar-width;
+
+    +mobile() {
+      padding-left: 0;
+    }
+  }
+
+  +mobile() {
+    .sidebar {
+      transform: translateX($sidebar-width);
+      visibility: visible;
+    }
+  }
+}
+
+.is-home {
+  .sidebar {
+    left: - $sidebar-width;
+    transform: translateX(0);
+    visibility: hidden;
+  }
+
+  .sidebar-toggle {
+    display: none;
+  }
+
+  .sidebar-translate {
+    the-transition();
+    padding-left: 0;
+  }
+
+  .sidebar-open {
+    .sidebar {
+      transform: translateX(0);
+      visibility: hidden;
+    }
+
+    // .sidebar-translate {
+    //   padding-left: 20rem;
+
+    //   +mobile() {
+    //     padding-left: 0;
+    //   }
+    // }
+  }
+}
