@@ -155,9 +155,6 @@ menu:
 archive:
   last_word: 没有更多的黑历史了_(:з」∠)_
 
-wordcloud:
-  enable: true
-  height: 350
 
 # You can set color for every tag or category.
 tags:
@@ -306,7 +303,6 @@ vendors:
   pjax: https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js
   crypto_js:
     all: https://cdn.jsdelivr.net/npm/crypto-js@latest/crypto-js.js
-  wordcloud: https://cdn.jsdelivr.net/npm/wordcloud@1.1.1/src/wordcloud2.js
   # https://github.com/SukkaW/DisqusJS
   disqusjs:
     css: https://cdn.jsdelivr.net/npm/disqusjs@latest/dist/disqusjs.css

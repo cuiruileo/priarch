@@ -23,7 +23,7 @@ html(lang=config.language)
     include ../_third-party/cdn.pug
     block preconnect
   body(class= is_home() ? 'is-home' : '')
-    .container
+    .container.sidebar-open
       //- global
       include ../_mixin/index.pug
       include sidebar.pug

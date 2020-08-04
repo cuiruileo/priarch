@@ -7,23 +7,63 @@ block content
     article#page
 
     if page.type === 'projects'
+      .album-list
+        for post in site.posts.data
+          if post.type === 'project'
+            li.project-item
+              .project-thumbnail
+
+              .project-desc
+
+
+
+
+            li.project-item
+              a.project-thumbnail(href=url_for(post.path))
+                img(loading='lazy', src=post.thumbnail, style='max-width:300px;', onerror='this.src=CONFIG.anonymous_image')
+              <br>
+              a.project-title(href=url_for(post.path))
+                !=post.title
+              .project-desc!=post.desc
+
+            //- a.album-list-item(href=url_for(post.path))
+            //-   figure(title=post.desc)
+            //-     img.album-list-cover(loading='lazy', src=post.thumbnail, οnlοad="this.src=CONFIG.anonymous_image")
+            //-     figcaption=post.title
+
+    else if page.type === 'news'
+      .news-list
+        for post in site.posts.data
+          if post.type === 'news'
+            .post-card-header
+              header.post-header
+                h2.post-title(itemprop='name headline')
+                  a.post-title-link(itemprop='url', href=url_for(post.path))=post.title
+
+                include _partial/post/post-meta.pug
+                if post.description
+                  .post-description=post.description
+
+            .post-card-content.text-center
+              .post-card-excerpt.post-markdown!=post.excerpt
+
+
+
+    //- if page.type === 'projects'
       include _mixin/project-collapse.pug
-      .post-collapse
+      .project-list
         for project in site.categories.data
           if project.name === 'project'
             +project_collapse(project.posts)
+      include _partial/pagination.pug
 
-      //- include _partial/pagination.pug
-      
-
-    else if page.type === 'news'
+    //- else if page.type === 'news'
       include _mixin/news-collapse.pug
       .post-collapse
         for news in site.categories.data
           if news.name === 'news'
             +news_collapse(news.posts)
             <br><br><br><br><br>
-
       //- include _partial/pagination.pug
 
     else
