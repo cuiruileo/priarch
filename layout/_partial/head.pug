@@ -4,10 +4,6 @@ link(rel='shortcut icon', href=url_for(favicon))
 //- Safari
 link(rel="mask-icon" href=url_for(favicon), color=theme.colors.primary)
 
-//- not use cdn.pre in dev
-if process.env.NODE_ENV === 'dev'
-  - theme.cdn.pre = ''
-
 //- preload
 if is_home()
   link(rel='preload', href=url_for(theme.cdn.pre + theme.banner.src), as='script')
