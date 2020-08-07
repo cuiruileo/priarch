@@ -15,10 +15,10 @@ html(lang=config.language)
     meta(name='theme' content="hexo-theme-yun")
     !=open_graph()
     - page_title(page)
-    if page.title
-      title=page.title + ' | ' + title
-    else
-      title=title
+    //- if page.title
+    //-   title=page.title + ' | ' + title
+    //- else
+    title=title
     include head.pug
     include ../_third-party/cdn.pug
     block preconnect
